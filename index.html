@@ -1,0 +1,99 @@
+<html ng-app="aplicacao">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="css/tabela.css">
+    
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    
+    
+    
+    <script src="app/app.js"></script>
+    <script src="app/controllers/controller.js"></script>
+    <base href="/">
+</head>
+
+    <body ng-controller="controller">
+    <div id="barra">
+        <ul>
+            <li><a href="#/">Início</a></li>
+            <li><a href="#/listar">Listar</a></li>
+            <li><a href="#/cadastrar">Cadastrar</a></li>
+            <li><a href="#/excluir">Excluir</a></li>
+            <li><a href="#/atualizar">Atualizar</a></li>
+        </ul>    
+    </div>
+    <ng-view>
+     teste    
+    </ng-view>
+    <div id="esquerda">
+        <form id="formulario" class="rounded" method="post" action="">
+            <h2>Formulário</h3>
+ 
+            <div class="entrada">
+                <label for="name">Nome:</label>
+                <input type="text" 
+                    placeholder="Digite seu nome..."
+                    class="input" name="name" id="name" 
+                    ng-model="nome" required="true"/>
+                <p class="msgDica">Digite o seu nome.</p>
+            </div>
+ 
+            <div class="entrada">
+                <label for="email">Email:</label>
+                <input type="text" 
+                       placeholder="Digite seu Email..."
+                       class="input" 
+                       name="email" 
+                       id="email" 
+                       ng-model="email" 
+                       required="true"/>
+                <p class="msgDica">Digite seu email</p>
+            </div>
+ 
+            <div class="entrada">
+                <label for="message">Mensagem:</label>
+                <textarea class="input textarea"
+                          name="txtMsg" 
+                          id="message"  >
+                </textarea>
+                <p class="msgDica">Escreva sua mensagem.</p>
+            </div>
+ 
+            <input type="submit" name="btEnviar"  class="button" value="Enviar" ngClick ="teste()" />
+            
+        </form>
+    </div>
+        
+    <div id="direita">
+        <h2>Listar</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="item in itens">
+                  <td class="linha" ng-click="teste(item)">{{ item.produto }}</td>
+                  <td class="linha">{{ item.quantidade }}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+        
+    </body>
+    
+</html>
